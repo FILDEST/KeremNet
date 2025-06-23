@@ -1,34 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Post } from './components/Post';
 import { PostProps } from './types/Post';
-
-const samplePost: PostProps = {
-  id: 1,
-  author: 'John Doe',
-  content: 'This is my first post!',
-  timestamp: new Date().toISOString(),
-  likes: 10,
-  comments: [
-    {
-      id: 1,
-      author: 'Alice',
-      content: 'Nice post!',
-      timestamp: new Date().toISOString(),
-    },
-    {
-      id: 2,
-      author: 'Bob',
-      content: 'Welcome!',
-      timestamp: new Date().toISOString(),
-    },
-  ],
-};
+import postsData from './data/posts.json';
+import './App.css';
 
 function App() {
+  const [posts, setPosts] = useState<PostProps[]>([]);
+
+  useEffect(() => {
+    // Simulate fetching mock data
+    setPosts(postsData);
+  }, []);
+
   return (
     <div className="App">
-      <h1 style={{ textAlign: 'center' }}>Post Demo</h1>
-      <Post {...samplePost} />
+      <h1>Home</h1>
+      {posts.map((post) => (
+        <Post key={post.id} {...post} />
+      ))}
     </div>
   );
 }
