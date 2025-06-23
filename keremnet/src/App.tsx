@@ -1,9 +1,9 @@
 import React from 'react';
 import { Post } from './components/Post';
-import { PostProps } from './types/Post';
+import { PostBase } from './types/Post';
 import './App.css';
 
-const samplePost: PostProps = {
+const samplePost: PostBase = {
   id: 1,
   author: 'John Doe',
   content: 'This is my first post!',

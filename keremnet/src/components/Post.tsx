@@ -1,11 +1,11 @@
 import React from 'react';
 import { Card, CardContent, Typography, Divider, Box, Avatar } from '@mui/material';
-import { PostProps } from '../types/Post';
+import { PostBase } from '../types/Post';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './Post.css';
 import { Comment } from './Comment';
 
-export const Post: React.FC<PostProps> = ({
+export const Post: React.FC<PostBase> = ({
   author,
   content,
   timestamp,
