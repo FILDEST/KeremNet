@@ -22,8 +22,8 @@ export const Post: React.FC<PostProps> = ({
         <span>❤️ {likes}</span>
       </div>
       <div className="post-comments">
-        <h4>Comments:</h4>
-        <ul>
+        {comments.length > 0 && <h4>Comments:</h4>}
+        <ul>  
           {comments.map((comment) => (
             <li key={comment.id}>
               <strong>{comment.author}</strong>: {comment.content}

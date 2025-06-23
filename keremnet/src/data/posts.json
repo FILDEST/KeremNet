@@ -1,25 +1,27 @@
-[
-  {
-    "id": 1,
-    "author": "John Doe",
-    "content": "This is my first post!",
-    "timestamp": "2025-06-23T10:00:00Z",
-    "likes": 10,
-    "comments": [
-      {
-        "id": 1,
-        "author": "Alice",
-        "content": "Nice post!",
-        "timestamp": "2025-06-23T10:30:00Z"
-      }
-    ]
-  },
-  {
-    "id": 2,
-    "author": "Mary Jane",
-    "content": "Another day, another post.",
-    "timestamp": "2025-06-22T09:15:00Z",
-    "likes": 5,
-    "comments": []
-  }
-]
+{
+  "posts": [
+    {
+      "id": 1,
+      "author": "John Doe",
+      "content": "This is my first post!",
+      "timestamp": "2025-06-23T10:00:00Z",
+      "likes": 10,
+      "comments": [
+        {
+          "id": 1,
+          "author": "Alice",
+          "content": "Nice post!",
+          "timestamp": "2025-06-23T10:30:00Z"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "author": "Mary Jane",
+      "content": "Another day, another post.",
+      "timestamp": "2025-06-22T09:15:00Z",
+      "likes": 5,
+      "comments": []
+    }
+  ]
+}
