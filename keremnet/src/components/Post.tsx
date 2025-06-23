@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, CardContent, Typography, Divider, Box, Avatar } from '@mui/material';
+import { Card, CardHeader, CardContent, Typography, Divider, Avatar, Box } from '@mui/material';
 import { PostBase } from '../types/Post';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './Post.css';
@@ -14,19 +14,20 @@ export const Post: React.FC<PostBase> = ({
 }) => {
   return (
     <Card className="fb-post-card">
+      <CardHeader className='fb-post-header'
+        avatar={<Avatar className="fb-post-avatar" />}
+        title={
+          <Typography variant="subtitle1" className="fb-post-author">
+            {author}
+          </Typography>
+        }
+        subheader={
+          <Typography variant="caption" className="fb-post-time">
+            {timestamp.toLocaleString()}
+          </Typography>
+        }
+      />
       <CardContent>
-        <Box className="fb-post-header">
-          <Avatar className="fb-post-avatar" />
-          <Box>
-            <Typography variant="subtitle1" className="fb-post-author">
-              {author}
-            </Typography>
-            <Typography variant="caption" className="fb-post-time">
-              {timestamp.toLocaleString()}
-            </Typography>
-          </Box>
-        </Box>
-
         <Typography variant="body1" className="fb-post-body">
           {content}
         </Typography>
@@ -39,23 +40,23 @@ export const Post: React.FC<PostBase> = ({
             {likesCount} Likes
           </Typography>
         </Box>
-    {/* Comments */}
-    {comments.length > 0 && (
-      <>
-        <Divider className="fb-post-divider" />
-        <Typography variant="subtitle2" className="fb-post-comments-title">
-          Comments
-        </Typography>
-        {comments.map((comment) => (
-          <Comment
-            key={comment.id}
-            author={comment.author}
-            content={comment.content}
-            timestamp={comment.timestamp}
-          />
-        ))}
-      </>
-    )}
+
+        {comments.length > 0 && (
+          <>
+            <Divider className="fb-post-divider" />
+            <Typography variant="subtitle2" className="fb-post-comments-title">
+              Comments
+            </Typography>
+            {comments.map((comment) => (
+              <Comment
+                key={comment.id}
+                author={comment.author}
+                content={comment.content}
+                timestamp={comment.timestamp}
+              />
+            ))}
+          </>
+        )}
       </CardContent>
     </Card>
   );
