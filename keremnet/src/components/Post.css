@@ -53,32 +53,3 @@
   font-size: 0.95rem;
   color: #65676b;
 }
-
-.fb-post-comments-title {
-  font-weight: 500;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-}
-
-.fb-post-comment {
-  margin-bottom: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  background-color: #f0f2f5;
-  padding: 0.75rem;
-  border-radius: 0.75rem;
-  max-width: 85%;
-}
-
-.fb-post-comment-author {
-  font-weight: 600;
-  margin-bottom: 0.25rem;
-  font-size: 0.9rem;
-}
-
-.fb-post-comment-time {
-  color: #65676b;
-  font-size: 0.75rem;
-  margin-top: 0.25rem;
-  align-self: flex-start;
-}

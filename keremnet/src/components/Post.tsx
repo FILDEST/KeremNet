@@ -3,6 +3,7 @@ import { Card, CardContent, Typography, Divider, Box, Avatar } from '@mui/materi
 import { PostProps } from '../types/Post';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import './Post.css';
+import { Comment } from './Comment';
 
 export const Post: React.FC<PostProps> = ({
   author,
@@ -38,24 +39,23 @@ export const Post: React.FC<PostProps> = ({
             {likesCount} Likes
           </Typography>
         </Box>
-
-        {comments.length > 0 && (
-          <>
-            <Divider className="fb-post-divider" />
-            <Typography variant="subtitle2" className="fb-post-comments-title">
-              Comments
-            </Typography>
-            {comments.map((comment) => (
-              <Box key={comment.id} className="fb-post-comment">
-                <span className="fb-post-comment-author">{comment.author}</span>
-                <span>{comment.content}</span>
-                <span className="fb-post-comment-time">
-                  {comment.timestamp.toLocaleString()}
-                </span>
-              </Box>
-            ))}
-          </>
-        )}
+    {/* Comments */}
+    {comments.length > 0 && (
+      <>
+        <Divider className="fb-post-divider" />
+        <Typography variant="subtitle2" className="fb-post-comments-title">
+          Comments
+        </Typography>
+        {comments.map((comment) => (
+          <Comment
+            key={comment.id}
+            author={comment.author}
+            content={comment.content}
+            timestamp={comment.timestamp}
+          />
+        ))}
+      </>
+    )}
       </CardContent>
     </Card>
   );
