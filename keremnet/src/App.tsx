@@ -7,20 +7,20 @@ const samplePost: PostProps = {
   id: 1,
   author: 'John Doe',
   content: 'This is my first post!',
-  timestamp: new Date().toISOString(),
+  timestamp: new Date(),
   likes: 10,
   comments: [
     {
       id: 1,
       author: 'Alice',
       content: 'Nice post!',
-      timestamp: new Date().toISOString(),
+      timestamp: new Date(),
     },
     {
       id: 2,
       author: 'Bob',
       content: 'Welcome!',
-      timestamp: new Date().toISOString(),
+      timestamp: new Date(),
     },
   ],
 };

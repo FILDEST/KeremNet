@@ -2,14 +2,14 @@ export interface Comment {
   id: number;
   author: string;
   content: string;
-  timestamp: string;
+  timestamp: Date;
 }
 
 export interface PostProps {
   id: number;
   author: string;
   content: string;
-  timestamp: string;
+  timestamp: Date;
   likes: number;
   comments: Comment[];
 }

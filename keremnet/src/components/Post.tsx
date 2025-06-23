@@ -1,5 +1,5 @@
 import React from 'react';
-import './Post.css';
+import { Card, CardContent, Typography, Divider } from '@mui/material';
 import { PostProps } from '../types/Post';
 
 export const Post: React.FC<PostProps> = ({
@@ -10,29 +10,40 @@ export const Post: React.FC<PostProps> = ({
   comments,
 }) => {
   return (
-    <div className="post">
-      <div className="post-header">
-        <h3>{author}</h3>
-        <span className="post-timestamp">{new Date(timestamp).toLocaleString()}</span>
-      </div>
-      <div className="post-content">
-        <p>{content}</p>
-      </div>
-      <div className="post-footer">
-        <span>❤️ {likes}</span>
-      </div>
-      <div className="post-comments">
-        <h4>Comments:</h4>
-        <ul>
-          {comments.map((comment) => (
-            <li key={comment.id}>
-              <strong>{comment.author}</strong>: {comment.content}
-              <br />
-              <small>{new Date(comment.timestamp).toLocaleString()}</small>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    <Card sx={{ marginBottom: 3 }}>
+      <CardContent>
+        <Typography variant="h6" component="div">
+          {author}
+        </Typography>
+        <Typography variant="caption" color="text.secondary">
+          {timestamp.toLocaleString()}
+        </Typography>
+
+        <Typography variant="body1" sx={{ marginTop: 2 }}>
+          {content}
+        </Typography>
+
+        <Typography variant="body2" color="text.secondary" sx={{ marginTop: 2 }}>
+          ❤️ {likes} Likes
+        </Typography>
+
+        {comments.length > 0 && (
+          <>
+            <Divider sx={{ marginY: 2 }} />
+            <Typography variant="subtitle1">Comments:</Typography>
+            {comments.map((comment) => (
+              <div key={comment.id} style={{ marginTop: 8 }}>
+                <Typography variant="body2">
+                  <strong>{comment.author}</strong>: {comment.content}
+                </Typography>
+                <Typography variant="caption" color="text.secondary">
+                  {comment.timestamp.toLocaleString()}
+                </Typography>
+              </div>
+            ))}
+          </>
+        )}
+      </CardContent>
+    </Card>
   );
 };
