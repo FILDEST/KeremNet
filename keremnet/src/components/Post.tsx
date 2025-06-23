@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, CardContent, Typography, Divider } from '@mui/material';
 import { PostProps } from '../types/Post';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+
 
 export const Post: React.FC<PostProps> = ({
   author,
@@ -23,8 +25,13 @@ export const Post: React.FC<PostProps> = ({
           {content}
         </Typography>
 
-        <Typography variant="body2" color="text.secondary" sx={{ marginTop: 2 }}>
-          ❤️ {likes} Likes
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ marginTop: 2, display: 'flex', alignItems: 'center', gap: 0.5 }}
+        >
+          <FavoriteIcon color="error" fontSize="small" />
+          {likes} Likes
         </Typography>
 
         {comments.length > 0 && (
