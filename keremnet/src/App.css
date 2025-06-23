@@ -1,17 +1,17 @@
 .App {
-  max-width: 600px;
-  margin: 40px auto 0;
+  max-width: 37.5rem;
+  margin: 2.5rem auto 0;
   background: #fff;
   min-height: 100vh;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.5rem rgba(0,0,0,0.08);
 }
 
 .app-title {
   text-align: center;
   background-color: rgb(198, 211, 51);
   color: #882525;
-  margin-bottom: 32px;
-  padding-top: 16px;
-  padding-bottom: 16px;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
