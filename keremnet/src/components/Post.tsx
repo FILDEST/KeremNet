@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card, CardContent, Typography, Divider } from '@mui/material';
+import { Card, CardContent, Typography, Divider, Box, Avatar } from '@mui/material';
 import { PostProps } from '../types/Post';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-
+import './Post.css';
 
 export const Post: React.FC<PostProps> = ({
   author,
@@ -12,41 +12,47 @@ export const Post: React.FC<PostProps> = ({
   comments,
 }) => {
   return (
-    <Card sx={{ marginBottom: 3 }}>
+    <Card className="fb-post-card">
       <CardContent>
-        <Typography variant="h6" component="div">
-          {author}
-        </Typography>
-        <Typography variant="caption" color="text.secondary">
-          {timestamp.toLocaleString()}
-        </Typography>
+        <Box className="fb-post-header">
+          <Avatar className="fb-post-avatar" />
+          <Box>
+            <Typography variant="subtitle1" className="fb-post-author">
+              {author}
+            </Typography>
+            <Typography variant="caption" className="fb-post-time">
+              {timestamp.toLocaleString()}
+            </Typography>
+          </Box>
+        </Box>
 
-        <Typography variant="body1" sx={{ marginTop: 2 }}>
+        <Typography variant="body1" className="fb-post-body">
           {content}
         </Typography>
 
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ marginTop: 2, display: 'flex', alignItems: 'center', gap: 0.5 }}
-        >
+        <Divider className="fb-post-divider" />
+
+        <Box className="fb-post-likes">
           <FavoriteIcon color="error" fontSize="small" />
-          {likesCount} Likes
-        </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {likesCount} Likes
+          </Typography>
+        </Box>
 
         {comments.length > 0 && (
           <>
-            <Divider sx={{ marginY: 2 }} />
-            <Typography variant="subtitle1">Comments:</Typography>
+            <Divider className="fb-post-divider" />
+            <Typography variant="subtitle2" className="fb-post-comments-title">
+              Comments
+            </Typography>
             {comments.map((comment) => (
-              <div key={comment.id} style={{ marginTop: 8 }}>
-                <Typography variant="body2">
-                  <strong>{comment.author}</strong>: {comment.content}
-                </Typography>
-                <Typography variant="caption" color="text.secondary">
+              <Box key={comment.id} className="fb-post-comment">
+                <span className="fb-post-comment-author">{comment.author}</span>
+                <span>{comment.content}</span>
+                <span className="fb-post-comment-time">
                   {comment.timestamp.toLocaleString()}
-                </Typography>
-              </div>
+                </span>
+              </Box>
             ))}
           </>
         )}

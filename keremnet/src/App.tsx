@@ -28,7 +28,12 @@ const samplePost: PostProps = {
 function App() {
   return (
     <div className="App">
-      <h1 className="app-title">Post Demo</h1>
+      <h1 className="app-title">Posts</h1>
+      <Post {...samplePost} />
+      <Post {...samplePost} />
+      <Post {...samplePost} />
+      <Post {...samplePost} />
+      <Post {...samplePost} />
       <Post {...samplePost} />
     </div>
   );
