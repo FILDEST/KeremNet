@@ -1,0 +1,42 @@
+  .post {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px auto;
+  max-width: 600px;
+  background-color: #fafafa;
+}
+
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-content {
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+.post-footer {
+  margin-top: 12px;
+  font-weight: bold;
+}
+
+.post-comments {
+  margin-top: 16px;
+}
+
+.post-comments ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.post-comments li {
+  margin-bottom: 8px;
+}
+
+.post-timestamp {
+  font-size: 0.85em;
+  color: #888;
+}

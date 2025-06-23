@@ -1,24 +1,34 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Post } from './components/Post';
+import { PostProps } from './types/Post';
+
+const samplePost: PostProps = {
+  id: 1,
+  author: 'John Doe',
+  content: 'This is my first post!',
+  timestamp: new Date().toISOString(),
+  likes: 10,
+  comments: [
+    {
+      id: 1,
+      author: 'Alice',
+      content: 'Nice post!',
+      timestamp: new Date().toISOString(),
+    },
+    {
+      id: 2,
+      author: 'Bob',
+      content: 'Welcome!',
+      timestamp: new Date().toISOString(),
+    },
+  ],
+};
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Post Demo</h1>
+      <Post {...samplePost} />
     </div>
   );
 }
