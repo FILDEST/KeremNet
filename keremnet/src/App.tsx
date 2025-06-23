@@ -1,6 +1,7 @@
 import React from 'react';
 import { Post } from './components/Post';
 import { PostProps } from './types/Post';
+import './App.css';
 
 const samplePost: PostProps = {
   id: 1,
@@ -27,7 +28,7 @@ const samplePost: PostProps = {
 function App() {
   return (
     <div className="App">
-      <h1 style={{ textAlign: 'center' }}>Post Demo</h1>
+      <h1 className="app-title">Post Demo</h1>
       <Post {...samplePost} />
     </div>
   );
