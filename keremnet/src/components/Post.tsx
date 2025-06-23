@@ -8,7 +8,7 @@ export const Post: React.FC<PostProps> = ({
   author,
   content,
   timestamp,
-  likes,
+  likesCount,
   comments,
 }) => {
   return (
@@ -31,7 +31,7 @@ export const Post: React.FC<PostProps> = ({
           sx={{ marginTop: 2, display: 'flex', alignItems: 'center', gap: 0.5 }}
         >
           <FavoriteIcon color="error" fontSize="small" />
-          {likes} Likes
+          {likesCount} Likes
         </Typography>
 
         {comments.length > 0 && (

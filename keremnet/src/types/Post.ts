@@ -10,6 +10,6 @@ export interface PostProps {
   author: string;
   content: string;
   timestamp: Date;
-  likes: number;
+  likesCount: number;
   comments: Comment[];
 }

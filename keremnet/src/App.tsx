@@ -8,7 +8,7 @@ const samplePost: PostProps = {
   author: 'John Doe',
   content: 'This is my first post!',
   timestamp: new Date(),
-  likes: 10,
+  likesCount: 10,
   comments: [
     {
       id: 1,
