@@ -12,16 +12,7 @@ export const App: React.FC = () => {
     fetch('http://localhost:3001/posts')
       .then(response => response.json())
       .then(data => {
-        // Convert timestamp strings to Date objects for posts and comments
-        const parsedPosts = data.map((post: any) => ({
-          ...post,
-          timestamp: new Date(post.timestamp),
-          comments: post.comments.map((comment: any) => ({
-            ...comment,
-            timestamp: new Date(comment.timestamp),
-          })),
-        }));
-        setPosts(parsedPosts);
+        setPosts(data);
         setLoading(false);
       })
       .catch(error => {

@@ -5,7 +5,7 @@
       "author": "John Doe",
       "content": "This is my first post!",
       "timestamp": "2025-06-23T10:00:00Z",
-      "likes": 10,
+      "likesCount": 10,
       "comments": [
         {
           "id": 1,
@@ -20,7 +20,7 @@
       "author": "Mary Jane",
       "content": "Another day, another post.",
       "timestamp": "2025-06-22T09:15:00Z",
-      "likes": 5,
+      "likesCount": 5,
       "comments": []
     },
     {
@@ -28,7 +28,7 @@
         "author": "Bob Smith",
         "content": "Loving the new features in this app!",
         "timestamp": "2025-06-21T14:45:00Z",
-        "likes": 20,
+        "likesCount": 20,
         "comments": [
             {
                 "id": 2,
@@ -43,7 +43,7 @@
         "author": "Jane Doe",
         "content": "Can't wait for the next update!",
         "timestamp": "2025-06-20T08:30:00Z",
-        "likes": 15,
+        "likesCount": 15,
         "comments": [
             {
                 "id": 3,

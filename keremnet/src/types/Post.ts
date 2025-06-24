@@ -3,7 +3,7 @@ export interface PostBase {
   id: number;
   author: string;
   content: string;
-  timestamp: Date;
+  timestamp: string;
   likesCount: number;
   comments: CommentBase[];
 }

@@ -29,7 +29,7 @@ export const Post: React.FC<PostBase> = ({
         }
         subheader={
           <Typography variant="caption" className="fb-post-time">
-            {timestamp.toLocaleString()}
+            {new Date(timestamp).toLocaleString()}
           </Typography>
         }
       />
