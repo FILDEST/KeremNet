@@ -1,0 +1,23 @@
+.app-main {
+  background: #fffbe6;
+  padding: 2rem;
+}
+
+.navbar {
+  background: #222;
+  color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  height: 40px;
+}
+
+.navbar-links a {
+  color: #fff;
+  margin-left: 1.5rem;
+  text-decoration: none;
+}

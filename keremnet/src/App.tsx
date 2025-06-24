@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Post } from './components/Post';
 import { PostBase } from './types/Post';
 import './App.css';
+import { AppLayout } from './components/applicationLayout/AppLayout';
 import CircularProgress from '@mui/material/CircularProgress';
 
 export const App: React.FC = () => {
@@ -24,6 +25,7 @@ export const App: React.FC = () => {
   }, []);
 
   return (
+    <AppLayout>
       <div className="App">
         <h1 className="app-title">Posts</h1>
         {loading ? (
@@ -37,6 +39,7 @@ export const App: React.FC = () => {
           posts.map((post) => <Post key={post.id} {...post} />)
         )}
       </div>
+    </AppLayout>
   );
 };
 
