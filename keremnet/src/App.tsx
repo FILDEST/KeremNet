@@ -1,42 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Post } from './components/Post';
 import { PostBase } from './types/Post';
 import './App.css';
 
-const samplePost: PostBase = {
-  id: 1,
-  author: 'John Doe',
-  content: 'This is my first post!',
-  timestamp: new Date(),
-  likesCount: 10,
-  comments: [
-    {
-      id: 1,
-      author: 'Alice',
-      content: 'Nice post!',
-      timestamp: new Date(),
-    },
-    {
-      id: 2,
-      author: 'Bob',
-      content: 'Welcome!',
-      timestamp: new Date(),
-    },
-  ],
-};
+export const App: React.FC = () => {
 
-function App() {
+  const [posts, setPosts] = React.useState<PostBase[]>([]);
+  const [loading, setLoading] = React.useState<boolean>(true);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/posts')
+      .then(response => response.json())
+      .then(data => {
+        // Convert timestamp strings to Date objects for posts and comments
+        const parsedPosts = data.map((post: any) => ({
+          ...post,
+          timestamp: new Date(post.timestamp),
+          comments: post.comments.map((comment: any) => ({
+            ...comment,
+            timestamp: new Date(comment.timestamp),
+          })),
+        }));
+        setPosts(parsedPosts);
+        setLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching posts:', error);
+        setLoading(false);
+      });
+  }, []);
+
   return (
     <div className="App">
       <h1 className="app-title">Posts</h1>
-      <Post {...samplePost} />
-      <Post {...samplePost} />
-      <Post {...samplePost} />
-      <Post {...samplePost} />
-      <Post {...samplePost} />
-      <Post {...samplePost} />
+      {loading ? (
+        <p>Loading posts...</p>
+      ) : (
+        posts.length === 0 ? (
+          <h1>No posts available.</h1>
+        ) :
+        posts.map((post) => <Post key={post.id} {...post} />)
+      )}
     </div>
   );
-}
-
+};
 export default App;
