@@ -8,7 +8,7 @@ export const Comment: React.FC<{ comment: CommentBase }> = ({ comment }) => (
     <Typography className="fb-post-comment-author">{comment.author}</Typography>
     <Typography component="span">{comment.content}</Typography>
     <Typography className="fb-post-comment-time">
-      {comment.timestamp.toLocaleString()}
+      {new Date(comment.timestamp).toLocaleString()}
     </Typography>
   </Box>
 );

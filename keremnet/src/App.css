@@ -14,4 +14,10 @@
   margin-bottom: 2rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.loading-indicator {
+   display: flex;
+  justify-content: center;
+  margin-top: 2rem;
 }

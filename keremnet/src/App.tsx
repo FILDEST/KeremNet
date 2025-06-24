@@ -1,42 +1,43 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Post } from './components/Post';
 import { PostBase } from './types/Post';
 import './App.css';
+import CircularProgress from '@mui/material/CircularProgress';
 
-const samplePost: PostBase = {
-  id: 1,
-  author: 'John Doe',
-  content: 'This is my first post!',
-  timestamp: new Date(),
-  likesCount: 10,
-  comments: [
-    {
-      id: 1,
-      author: 'Alice',
-      content: 'Nice post!',
-      timestamp: new Date(),
-    },
-    {
-      id: 2,
-      author: 'Bob',
-      content: 'Welcome!',
-      timestamp: new Date(),
-    },
-  ],
-};
+export const App: React.FC = () => {
+  const [posts, setPosts] = React.useState<PostBase[]>([]);
+  const [loading, setLoading] = React.useState<boolean>(true);
 
-function App() {
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/posts');
+        const data = await response.json();
+        setPosts(data);
+      } catch (error) {
+        console.error('Error fetching posts:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchPosts();
+  }, []);
+
   return (
-    <div className="App">
-      <h1 className="app-title">Posts</h1>
-      <Post {...samplePost} />
-      <Post {...samplePost} />
-      <Post {...samplePost} />
-      <Post {...samplePost} />
-      <Post {...samplePost} />
-      <Post {...samplePost} />
-    </div>
+      <div className="App">
+        <h1 className="app-title">Posts</h1>
+        {loading ? (
+          <div className='loading-indicator'>
+            <CircularProgress />
+          </div>
+        ) : (
+          posts.length === 0 ? (
+            <h1>No posts available.</h1>
+          ) :
+          posts.map((post) => <Post key={post.id} {...post} />)
+        )}
+      </div>
   );
-}
+};
 
 export default App;
