@@ -6,19 +6,21 @@
   background: #ffffff;
   padding: 0.5rem;
 }
+.fb-post-card .MuiCardHeader-root {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
 .fb-post-header {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding-bottom: 0 !important;
 }
 
 .fb-post-avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #ccc;
   flex-shrink: 0;
 }
 

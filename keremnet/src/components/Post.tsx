@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, CardHeader, CardContent, Typography, Divider, Avatar, Box } from '@mui/material';
 import { PostBase } from '../types/Post';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { deepPurple } from '@mui/material/colors';
+
 import './Post.css';
 import { Comment } from './Comment';
 
@@ -15,7 +17,11 @@ export const Post: React.FC<PostBase> = ({
   return (
     <Card className="fb-post-card">
       <CardHeader className='fb-post-header'
-        avatar={<Avatar className="fb-post-avatar" />}
+        avatar={
+        <Avatar className="fb-post-avatar" sx={{ bgcolor: deepPurple[400] }}>
+          {author.charAt(0).toUpperCase()}
+        </Avatar>
+        } 
         title={
           <Typography variant="subtitle1" className="fb-post-author">
             {author}
@@ -47,14 +53,9 @@ export const Post: React.FC<PostBase> = ({
             <Typography variant="subtitle2" className="fb-post-comments-title">
               Comments
             </Typography>
-            {comments.map((comment) => (
-              <Comment
-                key={comment.id}
-                author={comment.author}
-                content={comment.content}
-                timestamp={comment.timestamp}
-              />
-            ))}
+              {comments.map((comment) => (
+                <Comment key={comment.id} comment={comment} />
+              ))}
           </>
         )}
       </CardContent>

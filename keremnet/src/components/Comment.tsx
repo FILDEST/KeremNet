@@ -1,23 +1,14 @@
 import React from 'react';
 import { Box, Typography } from '@mui/material';
 import './Comment.css';
+import { CommentBase } from '../types/Comment';
 
-interface CommentProps {
-  author: string;
-  content: string;
-  timestamp: Date;
-}
-
-export const Comment: React.FC<CommentProps> = ({
-  author,
-  content,
-  timestamp,
-}) => (
+export const Comment: React.FC<{ comment: CommentBase }> = ({ comment }) => (
   <Box className="fb-post-comment">
-    <Typography className="fb-post-comment-author">{author}</Typography>
-    <Typography component="span">{content}</Typography>
+    <Typography className="fb-post-comment-author">{comment.author}</Typography>
+    <Typography component="span">{comment.content}</Typography>
     <Typography className="fb-post-comment-time">
-      {timestamp.toLocaleString()}
+      {comment.timestamp.toLocaleString()}
     </Typography>
   </Box>
 );

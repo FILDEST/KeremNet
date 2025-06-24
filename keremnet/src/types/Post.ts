@@ -1,10 +1,4 @@
-export interface CommentBase {
-  id: number;
-  author: string;
-  content: string;
-  timestamp: Date;
-}
-
+import { CommentBase } from './Comment';
 export interface PostBase {
   id: number;
   author: string;
