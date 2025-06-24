@@ -17,7 +17,7 @@ export const App: React.FC = () => {
       } catch (error) {
         console.error('Error fetching posts:', error);
       } finally {
-        // setLoading(false);
+        setLoading(false);
       }
     };
     fetchPosts();
