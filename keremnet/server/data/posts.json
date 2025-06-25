@@ -1,0 +1,74 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "author": "John Doe",
+      "content": "This is my first post!",
+      "timestamp": "2025-06-23T10:00:00Z",
+      "likesCount": 10,
+      "comments": [
+        {
+          "id": 1,
+          "author": "Alice",
+          "content": "Nice post!",
+          "timestamp": "2025-06-23T10:30:00Z"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "author": "Mary Jane",
+      "content": "Another day, another post.",
+      "timestamp": "2025-06-22T09:15:00Z",
+      "likesCount": 5,
+      "comments": []
+    },
+    {
+        "id": 3,
+        "author": "Bob Smith",
+        "content": "Loving the new features in this app!",
+        "timestamp": "2025-06-21T14:45:00Z",
+        "likesCount": 20,
+        "comments": [
+            {
+                "id": 2,
+                "author": "Charlie",
+                "content": "I agree, it's fantastic!",
+                "timestamp": "2025-06-21T15:00:00Z"
+                },
+                {
+                "id": 2,
+                "author": "Charlie",
+                "content": "I agree, it's fantastic!",
+                "timestamp": "2025-06-21T15:00:00Z"
+                }, 
+                {
+                "id": 2,
+                "author": "Charlie",
+                "content": "I agree, it's fantastic!",
+                "timestamp": "2025-06-21T15:00:00Z"
+                }, {
+                "id": 2,
+                "author": "Charlie",
+                "content": "I agree, it's fantastic!",
+                "timestamp": "2025-06-21T15:00:00Z"
+                }
+            ]
+        },
+    {
+        "id": 4,
+        "author": "Jane Doe",
+        "content": "Can't wait for the next update!",
+        "timestamp": "2025-06-20T08:30:00Z",
+        "likesCount": 15,
+        "comments": [
+            {
+                "id": 3,
+                "author": "Dave",
+                "content": "Me too! It's going to be great.",
+                "timestamp": "2025-06-20T09:00:00Z"
+            }
+        ]
+    }
+]
+}
