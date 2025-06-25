@@ -2,7 +2,7 @@ import { Comment } from './Comment';
 
 export interface Post {
   id: number;
-  author: string;
+  authorId: number;
   content: string;
   timestamp: string;
   likesCount: number;

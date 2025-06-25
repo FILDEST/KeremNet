@@ -4,7 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { AppLayout } from './AppLayout';
 import { Post } from '../Post';
 import { PostBase } from '../../types/Post';
-import { POSTS_API_URL } from '../../routes/consts';
+import { API_URL } from '../../routes/consts';
 
 export const App: React.FC = () => {
   const [posts, setPosts] = useState<PostBase[]>([]);
@@ -13,7 +13,7 @@ export const App: React.FC = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch(POSTS_API_URL);
+        const response = await fetch(`${API_URL}/posts`);
         const data = await response.json();
         setPosts(data);
       } catch (error) {

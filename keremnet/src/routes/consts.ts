@@ -1,1 +1,2 @@
-export const POSTS_API_URL = 'http://localhost:3001/posts';
+export const API_URL = 'http://localhost:3001/api';
+export const STATIC_URL = 'http://localhost:3001/static';
