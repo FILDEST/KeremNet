@@ -1,7 +1,10 @@
 import usersData from '../data/users.json';
 import { User } from '../models/User';
 
-export const getAllUsers = (): User[] => usersData.users;
+type UsersMap = { [key: string]: User };
+const users = usersData.users as UsersMap;
 
-export const getUserById = (id: number): User | undefined =>
-  usersData.users.find(user => user.id === id);
+export const getAllUsers = (): User[] => Object.values(users);
+
+export const getUserById = (id: string): User | undefined =>
+  users[id];

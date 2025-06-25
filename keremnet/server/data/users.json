@@ -1,7 +1,7 @@
 {
-  "users": [
-    { "id": 1, "name": "John Doe", "image": "my-image.jpg" },
-    { "id": 2, "name": "Mary Jane", "image": "my-image.jpg" },
-    { "id": 3, "name": "Bob Smith", "image": "my-image.jpg" }
-  ]
+  "users": {
+    "1": { "id": 1, "name": "John Doe", "image": "my-image.jpg" },
+    "2": { "id": 2, "name": "Mary Jane", "image": "my-image.jpg" },
+    "3": { "id": 3, "name": "Bob Smith", "image": "my-image.jpg" }
+  }
 }

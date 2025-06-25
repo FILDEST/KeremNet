@@ -1,6 +1,6 @@
 {
-  "posts": [
-    {
+  "posts": {
+    "22424": {
       "id": 22424,
       "authorId": 1,
       "content": "This is my first post!",
@@ -15,7 +15,7 @@
         }
       ]
     },
-    {
+    "225425": {
       "id": 225425,
       "authorId": 1,
       "content": "Another day, another post.",
@@ -23,7 +23,7 @@
       "likesCount": 5,
       "comments": []
     },
-    {
+    "342424": {
       "id": 342424,
       "authorId": 1,
       "content": "Loving the new features in this app!",
@@ -56,20 +56,20 @@
         }
       ]
     },
-    {
+    "5354": {
       "id": 5354,
       "authorId": 1,
       "content": "Can't wait for the next update!",
       "timestamp": "2025-06-20T08:30:00Z",
       "likesCount": 15,
       "comments": [
-            {
-                "id": 63,
-                "authorId": 1,
-                "content": "Me too! It's going to be great.",
-                "timestamp": "2025-06-20T09:00:00Z"
-            }
-        ]
+        {
+          "id": 63,
+          "authorId": 1,
+          "content": "Me too! It's going to be great.",
+          "timestamp": "2025-06-20T09:00:00Z"
+        }
+      ]
     }
-]
+  }
 }

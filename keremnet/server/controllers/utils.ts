@@ -1,4 +1,3 @@
-export function parseId(idParam: string): number | null {
-  const id = Number(idParam);
-  return Number.isNaN(id) ? null : id;
+export function parseId(idParam: string): string | null {
+  return idParam && idParam.length > 0 ? idParam : null;
 }
