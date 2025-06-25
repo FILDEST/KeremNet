@@ -1,18 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './PostLayout.css';
 import CircularProgress from '@mui/material/CircularProgress';
 import { AppLayout } from './AppLayout';
 import { Post } from '../Post';
 import { PostBase } from '../../types/Post';
+import { POSTS_API_URL } from '../../routes/consts';
 
 export const App: React.FC = () => {
-  const [posts, setPosts] = React.useState<PostBase[]>([]);
-  const [loading, setLoading] = React.useState<boolean>(true);
+  const [posts, setPosts] = useState<PostBase[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch('http://localhost:3001/posts');
+        const response = await fetch(POSTS_API_URL);
         const data = await response.json();
         setPosts(data);
       } catch (error) {
