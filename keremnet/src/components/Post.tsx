@@ -23,15 +23,15 @@ export const Post: React.FC<PostBase> = ({
   return (
     <Card className="fb-post-card">
       <CardHeader className='fb-post-header'
-        avatar={
-       <Avatar
+     avatar={
+          <Avatar
             className="fb-post-avatar"
             src={author?.image && loadImage(author.image, STATIC_URL)}
             sx={{ bgcolor: deepPurple[400] }}
+            alt={author?.name?.charAt(0).toUpperCase()}
           >
-            {author?.name && !author?.image && author.name.charAt(0).toUpperCase()}
           </Avatar>
-        } 
+        }
         title={
           <Typography variant="subtitle1" className="fb-post-author">
             {author?.name || "Unknown User"}
