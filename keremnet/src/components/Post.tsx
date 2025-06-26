@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Card, CardHeader, CardContent, Typography, Divider, Avatar, Box } from '@mui/material';
 import { PostBase } from '../types/Post';
 import FavoriteIcon from '@mui/icons-material/Favorite';
@@ -6,8 +6,10 @@ import { deepPurple } from '@mui/material/colors';
 
 import './Post.css';
 import { Comment } from './Comment';
-import { User } from '../types/User';
-import { API_URL } from '../routes/consts';
+import { useUserById } from '../hooks/useUserById';
+import { STATIC_URL } from '../routes/consts';
+import { loadImage } from '../utils/loadImage';
+
 
 export const Post: React.FC<PostBase> = ({
   authorId,
@@ -16,39 +18,23 @@ export const Post: React.FC<PostBase> = ({
   likesCount,
   comments,
 }) => {
-
-  const [author, setAuthor] = useState<User | null>(null);
-
-  useEffect(() => {
-    const fetchAuthor = async () => {
-      try {
-        const response = await fetch(`${API_URL}/users/${authorId}`);
-        if (response.ok) {
-          const data = await response.json();
-          setAuthor(data);
-        }
-      } catch (error) {
-        console.error('Error fetching author:', error);
-      }
-    };
-    fetchAuthor();
-  }, [authorId]);
+  const { user: author } = useUserById(authorId);
 
   return (
     <Card className="fb-post-card">
       <CardHeader className='fb-post-header'
         avatar={
        <Avatar
-          className="fb-post-avatar"
-          src={author?.image ? `http://localhost:3001/static/${author.image}` : undefined}
-          sx={{ bgcolor: deepPurple[400] }}
-        >
-          {(!author?.image && author?.name) ? author.name.charAt(0).toUpperCase() : null}
-        </Avatar>
+            className="fb-post-avatar"
+            src={author?.image && loadImage(author.image, STATIC_URL)}
+            sx={{ bgcolor: deepPurple[400] }}
+          >
+            {author?.name && !author?.image && author.name.charAt(0).toUpperCase()}
+          </Avatar>
         } 
         title={
           <Typography variant="subtitle1" className="fb-post-author">
-            {author?.name ? author.name : "Unknown User"}
+            {author?.name || "Unknown User"}
           </Typography>
         }
         subheader={
@@ -71,7 +57,7 @@ export const Post: React.FC<PostBase> = ({
           </Typography>
         </Box>
 
-        {comments.length > 0 && (
+        {comments.length > 0  && (
           <>
             <Divider className="fb-post-divider" />
             <Typography variant="subtitle2" className="fb-post-comments-title">

@@ -1,37 +1,43 @@
-import React, { useEffect, useState } from 'react';
-import { Box, Typography } from '@mui/material';
+import React,{useState, useEffect} from 'react';
+import { Box, Typography, Snackbar, Alert } from '@mui/material';
 import './Comment.css';
 import { CommentBase } from '../types/Comment';
-import { User } from '../types/User';
-import { API_URL } from '../routes/consts';
+import { useUserById } from '../hooks/useUserById';
 
 export const Comment: React.FC<{ comment: CommentBase }> = ({ comment }) => {
-  const [author, setAuthor] = useState<User | null>(null);
+  const { authorId, content, timestamp } = comment;
+  const { user: author, error: authorError } = useUserById(authorId);
+  const [open, setOpen] = useState(true);
 
   useEffect(() => {
-    const fetchAuthor = async () => {
-      try {
-        const response = await fetch(`${API_URL}/users/${comment.authorId}`);
-        if (response.ok) {
-          const data = await response.json();
-          setAuthor(data);
-        }
-      } catch (error) {
-        console.error('Error fetching comment author:', error);
-      }
-    };
-    fetchAuthor();
-  }, [comment.authorId]);
+    if (authorError) setOpen(true);
+  }, [authorError]);
+
+  if (!author && !authorError) return null;
 
   return (
-    <Box className="fb-post-comment">
-      <Typography className="fb-post-comment-author">
-        {author?.name || comment.authorId}
-      </Typography>
-      <Typography component="span">{comment.content}</Typography>
-      <Typography className="fb-post-comment-time">
-        {new Date(comment.timestamp).toLocaleString()}
-      </Typography>
-    </Box>
+    <>
+      {author && (
+        <Box className="fb-post-comment">
+          <Typography className="fb-post-comment-author">
+            {author.name}
+          </Typography>
+          <Typography component="span">{content}</Typography>
+          <Typography className="fb-post-comment-time">
+            {new Date(timestamp).toLocaleString()}
+          </Typography>
+        </Box>
+      )}
+      <Snackbar
+        open={!!authorError && open}
+        autoHideDuration={4000}
+        onClose={() => setOpen(false)}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert onClose={() => setOpen(false)} severity="error" sx={{ width: '100%' }}>
+          {authorError}
+        </Alert>
+      </Snackbar>
+    </>
   );
 };
