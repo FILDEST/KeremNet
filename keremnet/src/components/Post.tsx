@@ -1,6 +1,6 @@
-import React from 'react';
-import { Card, CardHeader, CardContent, Typography, Divider, Avatar, Box } from '@mui/material';
-import { PostBase } from '../types/Post';
+import React, { useState } from 'react';
+import { Card, CardHeader, CardContent, Typography, Divider, Avatar, Box, Accordion, AccordionSummary, AccordionDetails } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { deepPurple } from '@mui/material/colors';
 
@@ -9,7 +9,7 @@ import { Comment } from './Comment';
 import { useUser } from '../hooks/useUser';
 import { STATIC_URL } from '../routes/consts';
 import { loadImage } from '../utils/loadImage';
-
+import { PostBase } from '../types/Post';
 
 export const Post: React.FC<PostBase> = ({
   authorId,
@@ -19,11 +19,12 @@ export const Post: React.FC<PostBase> = ({
   comments,
 }) => {
   const { user: author } = useUser(authorId);
+  const [expanded, setExpanded] = useState(false);
 
   return (
     <Card className="fb-post-card">
       <CardHeader className='fb-post-header'
-     avatar={
+        avatar={
           <Avatar
             className="fb-post-avatar"
             src={author?.image && loadImage(author.image, STATIC_URL)}
@@ -57,16 +58,24 @@ export const Post: React.FC<PostBase> = ({
           </Typography>
         </Box>
 
-        {comments.length > 0  && (
-          <>
-            <Divider className="fb-post-divider" />
-            <Typography variant="subtitle2" className="fb-post-comments-title">
-              Comments
-            </Typography>
+        {comments.length > 0 && (
+          <Accordion expanded={expanded} onChange={() => setExpanded(!expanded)}>
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls="comments-content"
+              id="comments-header"
+            >
+              <Typography variant="subtitle2" className="fb-post-comments-title">
+                View {comments.length} Comment{comments.length !== 1 ? 's' : ''}
+              </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              <Divider className="fb-post-divider" />
               {comments.map((comment) => (
                 <Comment key={comment.id} comment={comment} />
               ))}
-          </>
+            </AccordionDetails>
+          </Accordion>
         )}
       </CardContent>
     </Card>
