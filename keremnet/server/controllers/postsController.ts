@@ -21,3 +21,13 @@ export const getComments = (req: Request, res: Response) => {
   if (!comments) return res.status(404).json({ error: 'Post not found' });
   res.json(comments);
 };
+
+
+export const createPost = (req: Request, res: Response) => {
+  const { authorId, content } = req.body;
+  if (!authorId || !content) {
+    return res.status(400).json({ error: 'Missing authorId or content' });
+  }
+  const newPost = postsService.createPost(authorId, content);
+  res.status(201).json(newPost);
+};
