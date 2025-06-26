@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { User } from '../types/User';
 import { API_URL } from '../routes/consts';
 
-export function useUserById(userId: string | number) {
+export function useUser(userId: number) {
   const [user, setUser] = useState<User | null>(null);
   const [error, setError] = useState<string | null>(null);
 

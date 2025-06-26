@@ -6,7 +6,7 @@ import { deepPurple } from '@mui/material/colors';
 
 import './Post.css';
 import { Comment } from './Comment';
-import { useUserById } from '../hooks/useUserById';
+import { useUser } from '../hooks/useUser';
 import { STATIC_URL } from '../routes/consts';
 import { loadImage } from '../utils/loadImage';
 
@@ -18,7 +18,7 @@ export const Post: React.FC<PostBase> = ({
   likesCount,
   comments,
 }) => {
-  const { user: author } = useUserById(authorId);
+  const { user: author } = useUser(authorId);
 
   return (
     <Card className="fb-post-card">

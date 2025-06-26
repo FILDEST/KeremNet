@@ -2,11 +2,11 @@ import React,{useState, useEffect} from 'react';
 import { Box, Typography, Snackbar, Alert } from '@mui/material';
 import './Comment.css';
 import { CommentBase } from '../types/Comment';
-import { useUserById } from '../hooks/useUserById';
+import { useUser } from '../hooks/useUser';
 
 export const Comment: React.FC<{ comment: CommentBase }> = ({ comment }) => {
   const { authorId, content, timestamp } = comment;
-  const { user: author, error: authorError } = useUserById(authorId);
+  const { user: author, error: authorError } = useUser(authorId);
   const [open, setOpen] = useState(true);
 
   useEffect(() => {
