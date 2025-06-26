@@ -1,7 +1,7 @@
 import { CommentBase } from './Comment';
 export interface PostBase {
   id: number;
-  author: string;
+  authorId: number;
   content: string;
   timestamp: string;
   likesCount: number;

@@ -6,25 +6,35 @@ import { deepPurple } from '@mui/material/colors';
 
 import './Post.css';
 import { Comment } from './Comment';
+import { useUser } from '../hooks/useUser';
+import { STATIC_URL } from '../routes/consts';
+import { loadImage } from '../utils/loadImage';
+
 
 export const Post: React.FC<PostBase> = ({
-  author,
+  authorId,
   content,
   timestamp,
   likesCount,
   comments,
 }) => {
+  const { user: author } = useUser(authorId);
+
   return (
     <Card className="fb-post-card">
       <CardHeader className='fb-post-header'
-        avatar={
-        <Avatar className="fb-post-avatar" sx={{ bgcolor: deepPurple[400] }}>
-          {author.charAt(0).toUpperCase()}
-        </Avatar>
-        } 
+     avatar={
+          <Avatar
+            className="fb-post-avatar"
+            src={author?.image && loadImage(author.image, STATIC_URL)}
+            sx={{ bgcolor: deepPurple[400] }}
+            alt={author?.name?.charAt(0).toUpperCase()}
+          >
+          </Avatar>
+        }
         title={
           <Typography variant="subtitle1" className="fb-post-author">
-            {author}
+            {author?.name || "Unknown User"}
           </Typography>
         }
         subheader={
@@ -47,7 +57,7 @@ export const Post: React.FC<PostBase> = ({
           </Typography>
         </Box>
 
-        {comments.length > 0 && (
+        {comments.length > 0  && (
           <>
             <Divider className="fb-post-divider" />
             <Typography variant="subtitle2" className="fb-post-comments-title">
